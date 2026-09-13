@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Демонстрационный макет банковского интерфейса">
+    <title>ВТБ Онлайн — демо</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <a class="logo" href="index.html">ВТБ</a>
+    <div class="header-actions">Выгода <span>·</span> 🔍 <span>·</span> 🎁</div>
+</header>
+
+<main class="container">
+    <aside class="sidebar">
+        <div class="user">Всеволод<br>Алексеевич</div>
+        <nav>
+            <a class="menu-item active" href="index.html">Главная</a>
+            <a class="menu-item" href="#">Платежи</a>
+            <a class="menu-item" href="#">История</a>
+            <button class="menu-item menu-button" onclick="openHelp()">Справки</button>
+            <a class="menu-item" href="#">⚙ Сервисы</a>
+        </nav>
+    </aside>
+
+    <section class="main-content">
+        <div class="card balance-card">
+            <div class="card-top">
+                <div>
+                    <span class="eyebrow">Мастер-счёт</span>
+                    <h1>13,09 ₽</h1>
+                </div>
+                <div class="card-icon">₽</div>
+            </div>
+            <div class="button-row">
+                <button>Пополнить</button>
+                <button class="secondary">Перевести</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-heading">
+                <h2>Накопления</h2>
+                <span class="muted">1 счёт</span>
+            </div>
+            <a class="savings-link" href="savings.html">
+                <div>
+                    <strong>Накопительный ВТБ-Счёт</strong>
+                    <span>50 211,17 ₽ · 7,5%</span>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+
+        <div class="mobile-support support">
+            <h3>Поддержка 24/7</h3>
+            <p>Помощник ВТБ<br>ответит на вопросы</p>
+            <button class="secondary">Задать вопрос</button>
+        </div>
+    </section>
+
+    <aside class="support desktop-support">
+        <div class="support-icon">?</div>
+        <h3>Поддержка 24/7</h3>
+        <p>Помощник ВТБ<br>ответит на вопросы</p>
+        <button class="secondary">Задать вопрос</button>
+    </aside>
+</main>
+
+<div id="helpModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+        <button class="modal-close" aria-label="Закрыть" onclick="closeHelp()">×</button>
+        <div id="helpTitle" class="modal-title">В следующем месяце вам<br>придет процент</div>
+        <div class="modal-rate">7,5% годовых</div>
+        <div class="modal-amount">263,70 ₽</div>
+    </div>
+</div>
+
+<script>
+function openHelp() {
+    const modal = document.getElementById("helpModal");
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+}
+
+function closeHelp() {
+    const modal = document.getElementById("helpModal");
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("helpModal").addEventListener("click", function(event) {
+    if (event.target === this) closeHelp();
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeHelp();
+});
+</script>
+
+</body>
+</html>
